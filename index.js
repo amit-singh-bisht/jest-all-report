@@ -14,7 +14,7 @@ const getOutputPath = require('./utils/getOutputPath');
 const consoleBuffer = {};
 
 const processor = (report, reporterOptions = {}, jestRootDir = null) => {
-  // If jest-junit is used as a reporter allow for reporter options
+  // If jest-all-report is used as a reporter allow for reporter options
   // to be used. Env and package.json will override.
   const options = getOptions.options(reporterOptions);
 
@@ -59,12 +59,12 @@ const processor = (report, reporterOptions = {}, jestRootDir = null) => {
 // TODO: refactor to es6 class after testResultsProcessor support is removed
 function JestJUnit (globalConfig, options) {
   // See if constructor was invoked statically
-  // which indicates jest-junit was invoked as a testResultsProcessor
+  // which indicates jest-all-report was invoked as a testResultsProcessor
   // and show deprecation warning
 
   if (globalConfig.hasOwnProperty('testResults')) {
     const newConfig = JSON.stringify({
-      reporters: ['jest-junit']
+      reporters: ['jest-all-report']
     }, null, 2);
 
     return processor(globalConfig);

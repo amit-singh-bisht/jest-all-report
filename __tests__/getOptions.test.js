@@ -10,7 +10,7 @@ const rootPackageJsonMock = path.join(rootPath, "package.json");
 const mockPackageJson = {
   name: 'foo',
   version: '1.0.0',
-  'jest-junit': {
+  'jest-all-report': {
     suiteName: 'test suite'
   }
 }
@@ -34,7 +34,7 @@ jest.doMock(rootPackageJsonMock, () => {
 describe('getOptions', () => {
   it ('should support package.json in root directory', () => {
     const options = getOptions.getAppOptions(rootPath)
-    expect(options).toBe(mockPackageJson['jest-junit'])
+    expect(options).toBe(mockPackageJson['jest-all-report'])
   });
 });
 

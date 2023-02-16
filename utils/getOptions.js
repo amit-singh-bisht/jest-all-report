@@ -35,7 +35,7 @@ function getAppOptions(pathToResolve) {
       let options;
 
       try {
-        options = (require(pkgpath) || {})['jest-junit'];
+        options = (require(pkgpath) || {})['jest-all-report'];
       } catch (error) {
         console.warn(`Unable to import package.json to get app Options : ${error}`)
       }

@@ -26,7 +26,7 @@ const path = require('path');
 
 const testResultProcessor = require('../');
 
-describe('jest-junit', () => {
+describe('jest-all-report', () => {
   beforeEach(() => {
     const foundKeys = Object.keys(process.env).filter(k => k.startsWith('JEST_JUNIT'));
     if (foundKeys.length > 0) {

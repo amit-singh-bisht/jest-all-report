@@ -1,20 +1,18 @@
-[![Actions Status](https://github.com/jest-community/jest-junit/actions/workflows/nodejs.yml/badge.svg?branch=master)](https://github.com/jest-community/jest-junit/actions)
-
-# jest-junit
+# jest-all-report
 A Jest reporter that creates compatible junit xml files
 
-Note: as of jest-junit 11.0.0 NodeJS >= 10.12.0 is required.
+Note: as of jest-all-report 11.0.0 NodeJS >= 10.12.0 is required.
 
 ## Installation
 ```shell
-yarn add --dev jest-junit
+yarn add --dev jest-all-report
 ```
 
 ## Usage
 In your jest config add the following entry:
 ```JSON
 {
-  "reporters": [ "default", "jest-junit" ]
+  "reporters": [ "default", "jest-all-report" ]
 }
 ```
 
@@ -26,17 +24,17 @@ jest
 
 For your Continuous Integration you can simply do:
 ```shell
-jest --ci --reporters=default --reporters=jest-junit
+jest --ci --reporters=default --reporters=jest-all-report
 ```
 
 ## Usage as testResultsProcessor (deprecated)
 The support for `testResultsProcessor` is only kept for [legacy reasons][test-results-processor] and might be removed in the future.
-You should therefore prefer to configure `jest-junit` as a _reporter_.
+You should therefore prefer to configure `jest-all-report` as a _reporter_.
 
 Should you still want to, add the following entry to your jest config:
 ```JSON
 {
-  "testResultsProcessor": "jest-junit"
+  "testResultsProcessor": "jest-all-report"
 }
 ```
 
@@ -48,12 +46,12 @@ jest
 
 For your Continuous Integration you can simply do:
 ```shell
-jest --ci --testResultsProcessor="jest-junit"
+jest --ci --testResultsProcessor="jest-all-report"
 ```
 
 ## Configuration
 
-`jest-junit` offers several configurations based on environment variables or a `jest-junit` key defined in `package.json` or a reporter option.
+`jest-all-report` offers several configurations based on environment variables or a `jest-all-report` key defined in `package.json` or a reporter option.
 Environment variable and package.json configuration should be **strings**.
 Reporter options should also be strings exception for suiteNameTemplate, classNameTemplate, titleNameTemplate that can also accept a function returning a string.
 
@@ -85,12 +83,12 @@ You can configure these options via the command line as seen below:
 JEST_SUITE_NAME="Jest JUnit Unit Tests" JEST_JUNIT_OUTPUT_DIR="./artifacts" jest
 ```
 
-Or you can also define a `jest-junit` key in your `package.json`.  All are **string** values.
+Or you can also define a `jest-all-report` key in your `package.json`.  All are **string** values.
 
 ```
 {
   ...
-  "jest-junit": {
+  "jest-all-report": {
     "suiteName": "jest tests",
     "outputDirectory": ".",
     "outputName": "junit.xml",
@@ -110,18 +108,18 @@ Or you can define your options in your reporter configuration.
 {
   reporters: [
     "default",
-    [ "jest-junit", { suiteName: "jest tests" } ]
+    [ "jest-all-report", { suiteName: "jest tests" } ]
   ]
 }
 ```
 
 
 ### Configuration Precedence
-If using the `usePathForSuiteName` and `suiteNameTemplate`, the `usePathForSuiteName` value will take precedence. ie: if `usePathForSuiteName=true` and `suiteNameTemplate="{filename}"`, the filepath will be used as the `name` attribute of the `<testsuite>` in the rendered `jest-junit.xml`).
+If using the `usePathForSuiteName` and `suiteNameTemplate`, the `usePathForSuiteName` value will take precedence. ie: if `usePathForSuiteName=true` and `suiteNameTemplate="{filename}"`, the filepath will be used as the `name` attribute of the `<testsuite>` in the rendered `jest-all-report.xml`).
 
 ### Examples
 
-Below are some example configuration values and the rendered `.xml` to created by `jest-junit`.
+Below are some example configuration values and the rendered `.xml` to created by `jest-all-report`.
 
 The following test defined in the file `/__tests__/addition.test.js` will be used for all examples:
 ```js
@@ -207,7 +205,7 @@ Using `classNameTemplate` as a function in reporter options
   reporters: [
     "default",
       [
-        "jest-junit",
+        "jest-all-report",
         {
           classNameTemplate: (vars) => {
             return vars.classname.toUpperCase();
@@ -230,7 +228,7 @@ renders
 ```
 
 #### Adding custom testsuite properties
-New feature as of jest-junit 11.0.0!
+New feature as of jest-all-report 11.0.0!
 
 Create a file in your project root directory named junitProperties.js:
 ```js
@@ -253,5 +251,3 @@ Will render
   </testsuite>
 </testsuites>
 ```
-
-[test-results-processor]: https://github.com/jest-community/jest-junit/discussions/158#discussioncomment-392985

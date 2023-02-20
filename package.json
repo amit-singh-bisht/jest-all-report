@@ -1,6 +1,6 @@
 {
   "name": "jest-all-report",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A reporter for JUnit to generate xml reports",
   "main": "index.js",
   "repository": {
@@ -25,6 +25,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "jest-summary-reporter": "^0.0.2",
     "mkdirp": "^1.0.4",
     "strip-ansi": "^6.0.1",
     "xml": "^1.0.1"
